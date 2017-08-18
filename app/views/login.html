@@ -1,0 +1,15 @@
+<div>
+    <img class="logo" src="images/EnergyVision.png"></img>
+</div>
+
+<div class="login">
+    <form name='form-login'>
+        <md-icon class="user" md-svg-src="images/icons/user.svg"></md-icon>
+        <input class="input-user" type="text" id="username" required placeholder="Username" ng-model="user.username">
+
+        <md-icon class="user" md-svg-src="images/icons/lock.svg"></md-icon>
+        <input class="input-user" type="password" id="password" required placeholder="Password" ng-model="user.password">
+        <p>{{message}}</p>
+        <md-button class="md-raised btn-login" aria-label="Login" ng-click="authenticateUser(user)">Login</md-button>
+
+    </form>

@@ -1,0 +1,112 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="page-header">
+                Funcionários / <a href="#"> Cadastro </a>
+            </h4>
+        </div>
+        <!-- col-lg-12 -->
+    </div>
+    <!-- clas=row -->
+</div>
+<!-- class=container-fluid -->
+
+<md-card>
+    <!-- BEGIN OF EMPLOYEE -->
+    <md-toolbar class="md-primary md-hue-2">
+        <div class="md-toolbar-tools" layout="row" ng-cloak>
+            <h2 flex class="md-flex">Funcionário</h2>
+            <md-fab-speed-dial md-open="false" md-direction="left" class="md-fling">
+                <md-fab-trigger>
+                    <md-button aria-label="menu" class="md-fab md-mini md-warn">
+                        <md-icon md-svg-src="images/icons/menu.svg"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="bottom">
+                            Ações
+                        </md-tooltip>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-actions>
+                    <md-button aria-label="Pré-Visualizar" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/structure.svg" aria-label="Structure"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="top">
+                            Pré-visualizar Estrutura
+                        </md-tooltip>
+                    </md-button>
+                    <md-button aria-label="LimparCampos" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/broom.svg" aria-label="Broom"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="bottom">
+                            Limpar Campos
+                        </md-tooltip>
+                    </md-button>
+                    <md-button aria-label="Enviar" ng-click="saveEmployee(employee)" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/check.svg" aria-label="Check"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="top">
+                            Enviar
+                        </md-tooltip>
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
+        <!-- class=md-toolbar-tools -->
+    </md-toolbar>
+
+    <md-card-content>
+        <div class="row">
+            <div class="col-lg-4">
+                <md-input-container class="md-block">
+                    <label>Registro</label>
+                    <input md-maxlength="20" required name="registry" ng-model="employee.registry">
+                </md-input-container>
+            </div>
+            <div class="col-lg-4">
+                <md-input-container class="md-block">
+                    <label>Nome Completo</label>
+                    <input md-maxlength="100" required name="name" ng-model="employee.name">
+                </md-input-container>
+            </div>
+            <div class="col-lg-4">
+                <md-input-container class="md-block">
+                    <label>Cargo</label>
+                    <input md-maxlength="100" required name="role" ng-model="employee.role">
+                </md-input-container>
+            </div>
+        </div>
+    </md-card-content>
+    <!-- END OF EMPLOYEE -->
+
+    <!-- BEGIN OF USER -->
+    <md-toolbar class="md-primary md-hue-2">
+        <div class="md-toolbar-tools" layout="row" ng-cloak>
+            <h2 flex class="md-flex">Usuário</h2>
+        </div>
+    </md-toolbar>
+
+    <md-card-content>
+        <div class="row">
+            <div class="col-lg-4">
+                <md-input-container class="md-block">
+                    <label>Tipo</label>
+                    <md-select name="type" ng-model="employee.User.admin" required>
+                        <md-option value="0">Administrador</md-option>
+                        <md-option value="1">Usuário</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="col-lg-4">
+                <md-input-container class="md-block">
+                    <label>Usuário</label>
+                    <input md-maxlength="20" required name="username" ng-model="employee.User.username">
+                </md-input-container>
+            </div>
+            <div class="col-lg-4">
+                <md-input-container class="md-block">
+                    <label>Senha</label>
+                    <input md-maxlength="15" required name="password" ng-model="employee.User.password">
+                </md-input-container>
+            </div>
+        </div>
+    </md-card-content>
+    <!-- END OF USER -->
+
+</md-card>

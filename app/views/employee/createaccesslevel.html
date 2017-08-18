@@ -1,0 +1,103 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="page-header">
+                Funcionários / <a href="#"> Alterar Nível de Acesso </a>
+            </h4>
+        </div>
+        <!-- col-lg-12 -->
+    </div>
+    <!-- class=row -->
+</div>
+<!-- class=container-fluid -->
+
+<md-card>
+    <md-toolbar class="md-primary md-hue-2">
+        <div class="md-toolbar-tools" layout="row" ng-cloak>
+            <h2 flex class="md-flex">Cadastro de Acessos</h2>
+            <md-fab-speed-dial md-open="false" md-direction="left" class="md-fling">
+                <md-fab-trigger>
+                    <md-button aria-label="menu" class="md-fab md-mini md-warn">
+                        <md-icon md-svg-src="images/icons/menu.svg"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="bottom">
+                            Ações
+                        </md-tooltip>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-actions>
+                    <md-button aria-label="Pré-Visualizar" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/structure.svg" aria-label="Structure"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="top">
+                            Pré-visualizar Estrutura
+                        </md-tooltip>
+                    </md-button>
+                    <md-button aria-label="LimparCampos" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/broom.svg" aria-label="Broom"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="bottom">
+                            Limpar Campos
+                        </md-tooltip>
+                    </md-button>
+                    <md-button aria-label="Enviar" ng-click="saveAccessLevel(accessLevel)" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/check.svg" aria-label="Check"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="top">
+                            Enviar
+                        </md-tooltip>
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
+        <!-- class=md-toolbar-tools -->
+    </md-toolbar>
+
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Sub-Estações</span>
+            <span class="md-subhead">Procure por uma sub-estação</span>
+        </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+        <md-select aria-label="Sub-estação" ng-model="accessLevel.sub_station_id" required>
+            <md-option value="{{objSubstation.id}}" ng-repeat="objSubstation in substations">{{objSubstation.name}}</md-option>
+        </md-select>
+        </card-content>
+
+</md-card>
+
+<md-card>
+
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Funcionários</span>
+            <span class="md-subhead">Procure por um funcionário</span>
+        </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+        <md-select aria-label="Funcionário" ng-model="accessLevel.employee_id" required>
+            <md-option value="{{objEmployee.id}}" ng-repeat="objEmployee in employees"><b>Registro: </b>{{objEmployee.registry}} - <b>Nome: </b>{{objEmployee.name}}</md-option>
+        </md-select>
+    </md-card-content>
+
+</md-card>
+
+<md-card>
+
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Nível de Acesso</span>
+            <span class="md-subhead">Selecione um nível de acesso</span>
+        </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+        <md-select aria-label="Nível de Acesso" name="type" ng-model="accessLevel.access_level_id" required>
+            <md-option value="1">Topógrafo</md-option>
+            <md-option value="2">Técnico</md-option>
+            <md-option value="3">Gerente</md-option>
+            <md-option value="4">Convidado</md-option>
+        </md-select>
+    </md-card-content>
+
+</md-card>

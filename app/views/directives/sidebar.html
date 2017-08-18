@@ -1,0 +1,102 @@
+<div class="match-parent" flex layout="row">
+  <md-sidenav md-theme="customSidebar" class="md-sidenav-left" md-component-id="sidebar" md-whiteframe="1" md-is-locked-open="true">
+    <md-content>
+      <md-list>
+        <md-list-item>
+          <md-button flex ui-sref="app.dashboard">
+            <md-icon md-svg-icon="images/icons/dashboard.svg"></md-icon> Dashboard
+          </md-button>
+          <md-divider></md-divider>
+        </md-list-item>
+
+        <!-- BEGIN - EQUIPMENT SECTION -->
+        <md-list-item>
+          <md-button flex data-toggle="collapse" data-target="#subMenuEquip" class="collapsed active">
+            <md-icon md-svg-icon="images/icons/build.svg"></md-icon> Equipamentos
+          </md-button>
+          <ul class="sub-menu collapse" id="subMenuEquip">
+            <md-button flex ui-sref="app.equipamento.cadastro" layout="column" data-toggle="collapse" data-target="#subMenuEquip">
+              Cadastrar
+            </md-button>
+            <md-button flex ui-sref="app.equipamento.consulta" layout="column" data-toggle="collapse" data-target="#subMenuEquip">
+              Consultar
+            </md-button>
+          </ul>
+          <md-divider></md-divider>
+        </md-list-item>
+        <!-- END - EQUIPMENT SECTION -->
+
+        <!-- BEGIN - INSPECTION SECTION -->
+        <md-list-item>
+          <md-button flex data-toggle="collapse" data-target="#subMenuInspe" class="collapsed active">
+            <md-icon md-svg-icon="images/icons/calendar.svg"></md-icon> Inspeções
+          </md-button>
+          <ul class="sub-menu collapse" id="subMenuInspe">
+            <md-button flex ui-sref="app.inspection.agendar" layout="column" data-toggle="collapse" data-target="#subMenuInspe">
+              Agendar
+            </md-button>
+          </ul>
+          <md-divider></md-divider>
+        </md-list-item>
+        <!-- END - INSPECTION SECTION -->
+
+        <!-- BEGIN - REPORT SECTION -->
+        <md-list-item>
+          <md-button flex data-toggle="collapse" data-target="#subMenuRelat" class="collapsed active">
+            <md-icon md-svg-icon="images/icons/report.svg"></md-icon> Relatórios
+          </md-button>
+          <ul class="sub-menu collapse" id="subMenuRelat">
+            <md-button flex ui-sref="app.relatorio.gerenciar" layout="column" data-toggle="collapse" data-target="#subMenuRelat">
+              Acompanhar
+            </md-button>
+          </ul>
+          <md-divider></md-divider>
+        </md-list-item>
+        <!-- END - REPORT SECTION -->
+
+        <!-- BEGIN - USER SECTION -->
+        <md-list-item>
+          <md-button flex data-toggle="collapse" data-target="#subMenuUsu" class="collapsed active">
+            <md-icon md-svg-icon="images/icons/account-manager.svg"></md-icon> Usuarios
+          </md-button>
+          <ul class="sub-menu collapse" id="subMenuUsu">
+            <md-button flex ui-sref="app.usuario.acesso" layout="column" data-toggle="collapse" data-target="#subMenuUsu">
+              Acessos
+            </md-button>
+            <md-button flex ui-sref="app.usuario.gerenciar" layout="column" data-toggle="collapse" data-target="#subMenuUsu">
+              Novo
+            </md-button>
+          </ul>
+          <md-divider></md-divider>
+        </md-list-item>
+        <!-- END - USER SECTION -->
+
+        <!-- BEGIN - AUX_TABLE SECTION -->
+        <md-list-item>
+          <md-button flex data-toggle="collapse" data-target="#subMenuAuxTable" class="collapsed active">
+            <md-icon md-svg-icon="images/icons/add_item.svg"></md-icon> Tabelas
+          </md-button>
+          <ul class="sub-menu collapse" id="subMenuAuxTable">
+            <md-button flex ui-sref="app.tabela.cadastro" layout="column" data-toggle="collapse" data-target="#subMenuAuxTable">
+              Cadastrar
+            </md-button>
+            <md-button flex ui-sref="app.tabela.gerenciar" layout="column" data-toggle="collapse" data-target="#subMenuAuxTable">
+              Gerenciar
+            </md-button>
+          </ul>
+          <md-divider></md-divider>
+        </md-list-item>
+        <!-- END - AUX_TABLE SECTION -->
+
+        <!-- BEGIN - ABOUT SECTION -->
+        <md-list-item>
+          <md-button flex ui-sref="app.about">
+            <md-icon md-svg-icon="images/icons/info.svg"></md-icon> Sobre
+          </md-button>
+          <md-divider></md-divider>
+        </md-list-item>
+        <!-- END - ABOUT SECTION -->
+      </md-list>
+    </md-content>
+  </md-sidenav>
+</div>

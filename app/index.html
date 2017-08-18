@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>EnergyVision - WebAdmin</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/login.css">
+
+
+  <!-- endbuild -->
+</head>
+
+<body ng-app="webAdminApp" ng-cloak layout=column>
+
+  <ui-view flex></ui-view>
+
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+  <script src="bower_components/angular-material/angular-material.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <!-- Directives -->
+  <script src="scripts/directives/header.js"></script>
+  <script src="scripts/directives/sidebar.js"></script>
+  <!-- Services -->
+  <script src="scripts/services/accesslevelAPIService.js"></script>
+  <script src="scripts/services/authAPIService.js"></script>
+  <script src="scripts/services/authinterceptorService.js"></script>
+  <script src="scripts/services/categoryAPIService.js"></script>
+  <script src="scripts/services/employeeAPIService.js"></script>
+  <script src="scripts/services/equipmentAPIService.js"></script>
+  <script src="scripts/services/installationAPIService.js"></script>
+  <script src="scripts/services/installationstatusAPIService.js"></script>
+  <script src="scripts/services/installationtypeAPIService.js"></script>
+  <script src="scripts/services/localstorageService.js"></script>
+  <script src="scripts/services/reportAPIService.js"></script>
+  <script src="scripts/services/scheduleinspectionAPIService.js"></script>
+  <script src="scripts/services/substationAPIService.js"></script>
+  <script src="scripts/services/usetypeAPIService.js"></script>
+  <!-- Configs -->
+  <script src="scripts/values/configValue.js"></script>
+  <!-- Controllers -->
+  <script src="scripts/controllers/authCtrl.js"></script>
+  <script src="scripts/controllers/managecategoryCtrl.js"></script>
+  <script src="scripts/controllers/manageinstallationstatusCtrl.js"></script>
+  <script src="scripts/controllers/manageinstallationtypeCtrl.js"></script>
+  <script src="scripts/controllers/managereportCtrl.js"></script>
+  <script src="scripts/controllers/managesubstationCtrl.js"></script>
+  <script src="scripts/controllers/manageusetypeCtrl.js"></script>
+  <script src="scripts/controllers/newcategoryCtrl.js"></script>
+  <script src="scripts/controllers/newemployeeCtrl.js"></script>
+  <script src="scripts/controllers/newequipmentCtrl.js"></script>
+  <script src="scripts/controllers/newinstallationstatusCtrl.js"></script>
+  <script src="scripts/controllers/newinstallationtypeCtrl.js"></script>
+  <script src="scripts/controllers/newscheduleinspectionCtrl.js"></script>
+  <script src="scripts/controllers/newsubstationCtrl.js"></script>
+  <script src="scripts/controllers/newusetypeCtrl.js"></script>
+  <script src="scripts/controllers/readequipmentCtrl.js"></script>
+  <script src="scripts/controllers/updateaccesslevelCtrl.js"></script>
+  <!-- Listeners -->
+  <script src="scripts/listeners/routechangeListener.js"></script>
+  <!-- Util -->
+  <script src="scripts/util/toastUtil.js"></script>
+  <script src="scripts/util/dateUtil.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>

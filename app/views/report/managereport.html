@@ -1,0 +1,130 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<h4 class="page-header">
+				Relatórios / <a href="#"> Gerenciar </a>
+			</h4>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+</div>
+
+<md-card>
+	<md-toolbar class="md-primary md-hue-2">
+		<div class="md-toolbar-tools" layout="row" ng-cloak>
+			<h2 flex class="md-flex">Gerenciamento de Relatórios</h2>
+		</div>
+	</md-toolbar>
+
+	<!-- INICIO DA SEÇÃO PARA A LISTAGEM DE TODOS OS RELATÓRIOS -->
+	<md-card-content>
+		<div class="row">
+			<div class="col-lg-12">
+				<input style="width:300px" type="search" ng-model="search" placeholder="Busca por relatórios">
+</div>
+</div>
+
+<div class="row">
+	<table id="lista-relatórios" class="table table-striped">
+		<thead>
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>Sub-Estação</th>
+				<th>Equipamento</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="ObjReport in reports | filter:search">
+			<tr>
+				<td>
+					<a class="btn btn-link" ng-init="toggle[$index] = false" ng-click="toggle[$index] = !toggle[$index]">
+						<md-icon md-svg-icon="images/icons/down-arrow.svg" ng-if="!toggle[$index]"></md-icon>
+						<md-icon md-svg-icon="images/icons/up-arrow.svg" ng-if="toggle[$index]"></md-icon>
+					</a>
+				</td>
+				<td>{{ObjReport.id}}</td>
+				<td>{{ObjReport.Installation.SubStation.name}}</td>
+				<td>{{ObjReport.Installation.Equipment.type}}</td>
+				<td>
+					<button class="btn btn-warning btn-small" ng-click="editReport($index)">
+						<md-icon md-svg-icon="images/icons/edit.svg"></md-icon> EDITAR
+					</button>
+				</td>
+			</tr>
+			<tr ng-if="toggle[$index]">
+				<td><b>Informações</b></td>
+				<td><b>Instalação</b></td>
+				<td>Tipo: {{ObjReport.Installation.InstallationType.type}}</td>
+				<td>Lat: {{ObjReport.Installation.latitude}}</td>
+				<td>Long: {{ObjReport.Installation.longitude}}</td>
+			</tr>
+			<tr ng-if="toggle[$index]">
+				<td>
+					<md-icon md-svg-icon="images/icons/tower.svg"></md-icon>
+				</td>
+				<td><b>Equipamento</b></td>
+				<td>Categoria: {{ObjReport.Installation.Equipment.Category.name}}</td>
+				<td>Tipo: {{ObjReport.Installation.Equipment.type}}</td>
+				<td>Descrição: {{ObjReport.Installation.Equipment.description}}</td>
+			</tr>
+			<tr ng-if="toggle[$index]">
+				<td>
+					<md-icon md-svg-icon="images/icons/face.svg"></md-icon>
+				</td>
+				<td><b>Funcionário</b></td>
+				<td>Registro: {{ObjReport.Employee.registry}}</td>
+				<td>Nome: {{ObjReport.Employee.name}}</td>
+				<td>Cargo: {{ObjReport.Employee.role}}</td>
+			</tr>
+			<tr ng-if="toggle[$index]" ng-repeat="ObjSection in ObjReport.Sections track by $index">
+				<td>
+					<md-icon md-svg-icon="images/icons/file.svg"></md-icon>
+				</td>
+				<td><b>Relatório</b></td>
+				<td>Descrição: {{ObjSection.description}}</td>
+				<td>Nome: {{ObjSection.name}}</td>
+				<td>Data: {{ObjSection.created_at}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</md-card-content>
+<!-- FIM DA SEÇÃO PARA A LISTAGEM DE TODOS OS RELATÓRIOS -->
+
+<md-toolbar class="md-primary md-hue-2">
+	<div class="md-toolbar-tools" layout="row" ng-cloak>
+		<h2 flex class="md-flex">Alterar Relatório</h2>
+	</div>
+</md-toolbar>
+
+<md-card-content>
+	<form class="row form-inline" name="validarValoresPreenchidos">
+		<div ng-repeat="ObjSection in report.Sections">
+			<div class="row">
+				<div class="col-lg-4">
+					<md-input-container class="md-block">
+						<label>Descrição</label>
+						<input type="text" name="description" ng-model="ObjSection.description" required>
+					</md-input-container>
+				</div>
+
+				<div class="col-lg-4">
+					<md-input-container class="md-block">
+						<label>Nome</label>
+						<input type="text" name="name" ng-model="ObjSection.name" class="input-small" required>
+					</md-input-container>
+				</div>
+			</div>
+
+			<button class="btn btn-success" ng-disabled="validarValoresPreenchidos.$invalid" ng-click="updateReport(report)">
+					<md-icon md-svg-icon="images/icons/check.svg"></md-icon> SALVAR
+				</button>
+			<button class="btn btn-danger btn-small" ng-disabled="validarValoresPreenchidos.$invalid" ng-click="deleteReport(report.id)">
+					<md-icon md-svg-icon="images/icons/delete.svg"></md-icon> DELETAR
+				</button>
+		</div>
+	</form>
+</md-card-content>
+</md-card>

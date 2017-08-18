@@ -1,0 +1,40 @@
+<div ng-controller="headerCtrl">
+    <md-toolbar class="md-primary">
+        <div class="md-toolbar-tools">
+            <h2>
+                <span>EnergyVision - WebAdmin</span>
+            </h2>
+            <span flex></span>
+
+            <md-menu>
+                <md-button class=" md-mini md-primary md-hue-2" ng-click="openMenu($mdOpenMenu, $event)">
+                    <md-icon md-svg-icon="images/icons/more.svg"></md-icon>
+                    <md-tooltip md-visible="false" md-direction="bottom">
+                        Mais opções
+                    </md-tooltip>
+                </md-button>
+                <md-menu-content>
+                    <md-menu-item>
+                        <md-button>
+                            <md-icon md-svg-icon="images/icons/settings.svg"></md-icon>
+                            Preferências
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button>
+                            <md-icon md-svg-icon="images/icons/account.svg"></md-icon>
+                            Minha Conta
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-divider></md-menu-divider>
+                    <md-menu-item>
+                        <md-button ng-click="logout()">
+                            <md-icon md-svg-icon="images/icons/exit.svg"></md-icon>
+                            Sair
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </md-toolbar>
+</div>

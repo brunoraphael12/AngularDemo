@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="page-header">
+                Inspeções / <a href="#"> Agendamento </a>
+            </h4>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+
+<md-card>
+<md-toolbar class="md-primary md-hue-2">
+        <div class="md-toolbar-tools" layout="row" ng-cloak>
+            <h2 flex class="md-flex">Agendar</h2>
+            <md-fab-speed-dial md-open="false" md-direction="left" class="md-fling">
+                <md-fab-trigger>
+                    <md-button aria-label="menu" class="md-fab md-mini md-warn">
+                        <md-icon md-svg-src="images/icons/menu.svg"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="bottom">
+                            Ações
+                        </md-tooltip>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-actions>
+                    <md-button aria-label="Pré-Visualizar" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/structure.svg" aria-label="Structure"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="top">
+                            Pré-visualizar Estrutura
+                        </md-tooltip>
+                    </md-button>
+                    <md-button aria-label="LimparCampos" ng-click="" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/broom.svg" aria-label="Broom"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="bottom">
+                            Limpar Campos
+                        </md-tooltip>
+                    </md-button>
+                    <md-button aria-label="Enviar" ng-click="saveScheduleInspection(scheduleInspection)" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/check.svg" aria-label="Check"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="top">
+                            Salvar
+                        </md-tooltip>
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
+    </md-toolbar>
+
+    <md-card-content>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <md-input-container class="md-block">
+                    <label>Funcionário</label>
+                    <md-select name="category" ng-model="scheduleInspection.employee_id" required>
+                        <md-option value="{{ObjEmployee.id}}" ng-repeat="ObjEmployee in employees">
+                            <b>Registro: </b>{{ObjEmployee.id}}
+                            <br>
+                            <b>Nome: </b>{{ObjEmployee.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <div class="col-lg-6">
+                <md-input-container class="md-block">
+                    <label>Instalação</label>
+                    <md-select name="category" ng-model="scheduleInspection.installation_id" required>
+                        <md-option value="{{ObjInstallation.id}}" ng-repeat="ObjInstallation in installations">
+                            <b>Latitude: </b>{{ObjInstallation.latitude}}, 
+                            <b>Longitude: </b>{{ObjInstallation.longitude}}
+                            <br>
+                            <b>Equipamento: </b>{{ObjInstallation.Equipment.type}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+
+        <div class="row">
+             <div flex-gt-xs="">
+                <md-datepicker ng-model="scheduleInspecion.dtSchedule" md-placeholder="Data" md-min-date="minDate"></md-datepicker>
+            </div>
+        </div>
+
+    </md-card-content>
+</md-card>

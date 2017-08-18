@@ -1,0 +1,56 @@
+<md-card>
+<!-- INICIO DA SEÇÃO PARA A LISTAGEM DE TODOS OS EQUIPAMENTOS -->
+	<md-card-content>
+		<div class="row">
+			<div class="col-lg-12">
+				<input style="width:300px" type="search" ng-model="search" placeholder="Busca por status">
+			</div>
+		</div>
+
+		<div class="row">
+			<table id="lista-statuses" class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ObjStatus in installationStatuses | filter:search">
+						<td>{{ObjStatus.id}}</td>
+						<td>{{ObjStatus.status}}</td>
+						<td>
+							<button class="btn btn-warning btn-small" ng-click="editInstallationStatus($index)">
+								<md-icon md-svg-icon="images/icons/edit.svg"></md-icon> EDITAR
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</md-card-content>
+<!-- FIM DA SEÇÃO PARA A LISTAGEM DE TODOS OS EQUIPAMENTOS -->
+    
+	<!-- INICIO DA SEÇÃO PARA A ALTERAÇÃO DOS DADOS DO EQUIPAMENTO -->
+	<md-card-content>
+		<form class="row form-inline" name="validarValoresPreenchidos">
+			<div class="row">
+				<div class="col-lg-4">
+					<md-input-container>
+						<label>Status</label>
+						<input name="status" ng-model="installationStatus.status">
+					</md-input-container>
+				</div>
+			</div>
+	<!-- FIM DA SEÇÃO PARA A ALTERAÇÃO DOS DADOS DO EQUIPAMENTO -->
+
+			<button class="btn btn-success" ng-disabled="validarValoresPreenchidos.$invalid" ng-click="updateInstallationStatus(installationStatus)">
+				<md-icon md-svg-icon="images/icons/check.svg"></md-icon> SALVAR
+			</button>
+			<button class="btn btn-danger btn-small" ng-disabled="validarValoresPreenchidos.$invalid" ng-click="deleteInstallationStatus(installationStatus.id)">
+				<md-icon md-svg-icon="images/icons/delete.svg"></md-icon> DELETAR
+			</button>
+<!-- FIM DA SEÇÃO PARA A ALTERAÇÃO DOS DADOS DO EQUIPAMENTO -->
+		</form>
+	</md-card-content>
+</md-card>

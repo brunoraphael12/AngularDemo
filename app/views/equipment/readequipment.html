@@ -1,0 +1,168 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<h4 class="page-header">
+				Equipamentos / <a href="#"> Consulta </a>
+			</h4>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+</div>
+
+
+<md-card>
+	<md-toolbar class="md-primary md-hue-2">
+		<div class="md-toolbar-tools" layout="row" ng-cloak>
+			<h2 flex class="md-flex">Gerenciamento de Equipamentos</h2>
+		</div>
+	</md-toolbar>
+
+<!-- INICIO DA SEÇÃO PARA A LISTAGEM DE TODOS OS EQUIPAMENTOS -->
+	<md-card-content>
+		<div class="row">
+			<div class="col-lg-12">
+				<input style="width:300px" type="search" ng-model="search" placeholder="Busca por equipamentos">
+			</div>
+		</div>
+
+		<div class="row">
+			<table id="lista-equipamentos" class="table table-striped">
+				<thead>
+					<tr>
+						<th>Categoria</th>
+						<th>Tipo</th>
+						<th>Descrição</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="ObjEquipment in equipments | filter:search">
+					<tr>			
+						<td>{{ ObjEquipment.category_id }}</td>
+						<td>{{ ObjEquipment.type }}</td>
+						<td>{{ ObjEquipment.description }}</td>
+						<td>
+							<button class="btn btn-warning btn-small" ng-click="editEquipment($index)">
+								<md-icon md-svg-icon="images/icons/edit.svg"></md-icon> EDITAR
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</md-card-content>
+<!-- FIM DA SEÇÃO PARA A LISTAGEM DE TODOS OS EQUIPAMENTOS -->
+
+  	<md-toolbar class="md-primary md-hue-2">
+        <div class="md-toolbar-tools" layout="row" ng-cloak>
+            <h2 flex class="md-flex">Dados do Equipamento</h2>
+        </div>
+    </md-toolbar>
+	<!-- INICIO DA SEÇÃO PARA A ALTERAÇÃO DOS DADOS DO EQUIPAMENTO -->
+	<md-card-content>
+		<form class="row form-inline" name="validarValoresPreenchidos">
+			<div class="row">
+				<div class="col-lg-4">
+					<md-input-container class="md-block">
+						<label>Categoria</label>
+						<md-select name="category" ng-model="equipment.category_id" aria-label="equipment.category_id" required>
+							<md-option value="{{ObjCategory.id}}" ng-repeat="ObjCategory in categories">{{ObjCategory.name}}</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
+
+				<div class="col-lg-4">
+					<md-input-container class="md-block">
+						<label>Tipo</label>
+						<input type="text" name="type" ng-model="equipment.type" required>
+					</md-input-container>
+				</div>
+
+				<div class="col-lg-4">
+					<md-input-container class="md-block">
+						<label>Descrição</label>
+						<input type="text" name="description" ng-model="equipment.description" class="input-small" required>
+					</md-input-container>
+				</div>
+			</div>
+
+	<!-- FIM DA SEÇÃO PARA A ALTERAÇÃO DOS DADOS DO EQUIPAMENTO -->
+
+			<md-toolbar class="md-primary md-hue-2">
+				<div class="md-toolbar-tools" layout="row" ng-cloak>
+					<h2 flex class="md-flex">Características</h2>
+				</div>
+			</md-toolbar>
+
+			<div ng-repeat="objCharacteristic in equipment.Characteristics track by $index">
+				
+				<!-- INICIO DA SEÇÃO PARA A ALTERAÇÃO DAS CARACTERÍSTICAS DO EQUIPAMENTO -->
+				<md-card-content>
+					<div layout="row" layout-align="start center">
+						<md-button class=" md-mini md-icon-button md-warn" aria-label="Remove">
+                    		<md-icon md-svg-icon="images/icons/close-circle.svg"></md-icon>
+                		</md-button>
+						<div class="col-lg-6" flex>
+							<md-input-container class="md-block">
+								<label>Categoria </label>
+								<input name="name" ng-model="objCharacteristic.category">
+							</md-input-container>
+						</div>
+						<div class="col-lg-6" flex>
+							<md-input-container class="md-block">
+								<label>Sub-Categoria </label>
+								<input name="name" ng-model="objCharacteristic.subCategory">
+							</md-input-container>
+						</div>
+					</div>
+
+					<!-- INICIO DA SEÇÃO PARA A ALTERAÇÃO DOS VALORES DAS CARACTERISTICAS DO EQUIPAMENTO -->
+					<div ng-repeat="objValue in objCharacteristic.Values">
+						<div layout="row" layout-align="start center" style="padding-left: 50px;">
+							<md-button class=" md-mini md-icon-button md-warn" aria-label="Remove">
+                        		<md-icon md-svg-icon="images/icons/close-circle.svg"></md-icon>
+                    		</md-button>
+							<div class="col-lg-3">
+								<md-input-container>
+									<label>Titulo </label>
+									<input name="name" ng-model="objValue.title">
+								</md-input-container>
+							</div>
+							<div class="col-lg-3">
+								<md-input-container>
+									<label>Valor </label>
+									<input name="name" ng-model="objValue.value">
+								</md-input-container>
+							</div>
+						</div>
+					</div>
+
+					<div layout="row" layout-align="start center" style="padding-left: 50px; opacity: 0.2;">
+                		<md-button class="md-icon-button md-primary md-hue-2" aria-label="More" ng-click="newValue(mockValue, $index)">
+                    		<md-icon md-svg-icon="images/icons/plus-circle.svg"></md-icon>
+                		</md-button>
+                		<div class="hint md-caption">Novo Valor</div>
+           			</div>
+
+					   <md-list-item>
+						<div style="opacity: 0.2;" layout="row" layout-align="start center">
+							<md-button class="md-icon-button md-primary md-hue-2" aria-label="More" ng-click="newCharacteristic(mockCharacteristic)">
+								<md-icon md-svg-icon="images/icons/plus-circle.svg"></md-icon>
+							</md-button>
+
+							<div class="hint md-caption">Nova Caracteristica</div>
+						</div>
+        			</md-list-item>
+				</md-card-content>
+			</div>
+
+			<button class="btn btn-success" ng-disabled="validarValoresPreenchidos.$invalid" ng-click="updateEquipment(equipment)">
+				<md-icon md-svg-icon="images/icons/check.svg"></md-icon> SALVAR
+			</button>
+			<button class="btn btn-danger btn-small" ng-disabled="validarValoresPreenchidos.$invalid" ng-click="deleteEquipment(equipment.id)">
+				<md-icon md-svg-icon="images/icons/delete.svg"></md-icon> DELETAR
+			</button>
+<!-- FIM DA SEÇÃO PARA A ALTERAÇÃO DOS DADOS DO EQUIPAMENTO -->
+		</form>
+	</md-card-content>
+</md-card>

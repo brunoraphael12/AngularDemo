@@ -1,0 +1,154 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="page-header">
+                Equipamentos / <a href="#"> Cadastro </a>
+            </h4>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<md-card>
+    <md-toolbar class="md-primary md-hue-2">
+        <div class="md-toolbar-tools" layout="row" ng-cloak>
+            <h2 flex class="md-flex">Cadastro de Equipamentos</h2>
+            <md-fab-speed-dial md-open="false" md-direction="left" class="md-fling">
+                <md-fab-trigger>
+                    <md-button aria-label="menu" class="md-fab md-mini md-warn">
+                        <md-icon md-svg-src="images/icons/menu.svg"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="bottom">
+                            Ações
+                        </md-tooltip>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-actions>
+                    <md-button aria-label="Pré-Visualizar" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/structure.svg" aria-label="Structure"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="top">
+                            Pré-visualizar Estrutura
+                        </md-tooltip>
+                    </md-button>
+                    <md-button aria-label="LimparCampos" ng-click="cleanFields(mockEquipment)" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/broom.svg" aria-label="Broom"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="bottom">
+                            Limpar Campos
+                        </md-tooltip>
+                    </md-button>
+                    <md-button aria-label="Enviar" ng-click="saveEquipment(equipment)" class="md-fab md-primary md-raised md-mini">
+                        <md-icon md-svg-src="images/icons/check.svg" aria-label="Check"></md-icon>
+                        <md-tooltip md-visible="false" md-direction="top">
+                            Enviar
+                        </md-tooltip>
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
+    </md-toolbar>
+    <md-card-content>
+        <div class="row">
+            <div class="col-lg-4">
+                <md-input-container class="md-block">
+                    <label>Categoria</label>
+                    <md-select name="category" ng-model="equipment.category_id" required>      
+                        <md-option value="{{ObjCategory.id}}" ng-repeat="ObjCategory in categories">{{ObjCategory.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="col-lg-4">
+                <md-input-container class="md-block">
+                    <label>Tipo</label>
+                    <input md-maxlength="50" required name="type" ng-model="equipment.type">
+                    <div class="hint md-caption">Ex: 145KV</div>
+                </md-input-container>
+            </div>
+            <div class="col-lg-4">
+                <md-input-container class="md-block">
+                    <label>Descrição</label>
+                    <input md-maxlength="80" required name="description" ng-model="equipment.description">
+                    <div class="hint md-caption">Ex: Disjuntores tripolares, uso externo</div>
+                </md-input-container>
+            </div>
+        </div>
+        </br>
+        <div class="row">
+            <div class="col-lg-6">
+                <md-input-container class="md-block">
+                    <input aria-label="Modelo3D" id="input-file-id" type="file" ng-model="equipment.model3D" />
+                    <div class="hint md-caption">Selecione o modelo 3D do equipamento</div>
+                </md-input-container>
+            </div>
+        </div>
+    </md-card-content>
+
+    <md-toolbar class="md-primary md-hue-2">
+        <div class="md-toolbar-tools" layout="row" ng-cloak>
+            <h2 flex class="md-flex">Caracteristicas</h2>
+        </div>
+    </md-toolbar>
+    <md-card-content>
+
+        <!-- BEGINOF Caracteristicas -->
+        <div ng-repeat="objCharacteristic in equipment.Characteristics track by $index">
+            <div layout="row" layout-align="start center">
+                <md-button class=" md-mini md-icon-button md-warn" aria-label="Remove">
+                    <md-icon md-svg-icon="images/icons/close-circle.svg"></md-icon>
+                </md-button>
+                <div class="col-lg-6" flex>
+                    <md-input-container class="md-block">
+                        <label>Categoria </label>
+                        <input name="name" ng-model="objCharacteristic.category">
+                    </md-input-container>
+                </div>
+                <div class="col-lg-6" flex>
+                    <md-input-container class="md-block">
+                        <label>Sub-Categoria </label>
+                        <input name="name" ng-model="objCharacteristic.subCategory">
+                    </md-input-container>
+                </div>
+            </div>
+            <!-- BEGINOF Valores -->
+            <div ng-repeat="objValue in objCharacteristic.Values">
+                <div layout="row" layout-align="start center" style="padding-left: 50px;">
+                    <md-button class=" md-mini md-icon-button md-warn" aria-label="More">
+                        <md-icon md-svg-icon="images/icons/close-circle.svg"></md-icon>
+                    </md-button>
+                    <div class="col-lg-3">
+                        <md-input-container>
+                            <label>Titulo </label>
+                            <input name="name" ng-model="objValue.title">
+                        </md-input-container>
+                    </div>
+                    <div class="col-lg-3">
+                        <md-input-container>
+                            <label>Valor </label>
+                            <input name="name" ng-model="objValue.value">
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+
+            <div layout="row" layout-align="start center" style="padding-left: 50px; opacity: 0.2;">
+                <md-button class="md-icon-button md-primary md-hue-2" aria-label="More" ng-click="newValue(mockValue, $index)">
+                    <md-icon md-svg-icon="images/icons/plus-circle.svg"></md-icon>
+                </md-button>
+                <div class="hint md-caption">Novo Valor</div>
+            </div>
+
+            <hr/>
+            <!-- ENDOF Valores -->
+        </div>
+        <!-- ENDOF Caracteristicas -->
+
+        <md-list-item>
+            <div style="opacity: 0.2;" layout="row" layout-align="start center">
+                <md-button class="md-icon-button md-primary md-hue-2" aria-label="More" ng-click="newCharacteristic(mockCharacteristic)">
+                    <md-icon md-svg-icon="images/icons/plus-circle.svg"></md-icon>
+                </md-button>
+
+                <div class="hint md-caption">Nova Caracteristica</div>
+            </div>
+        </md-list-item>
+    </md-card-content>
+</md-card>

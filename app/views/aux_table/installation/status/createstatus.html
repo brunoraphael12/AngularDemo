@@ -1,0 +1,19 @@
+<md-card>
+    <form name="validarValoresPreenchidos">
+        <md-card-content>
+            <div class="row">
+                <div class="col-lg-4">
+                    <md-input-container class="md-block">
+                        <label>Status</label>
+                        <input md-maxlength="100" required name="type" ng-model="installationStatus.name">
+                        <div class="hint md-caption">Ex: Em Manutenção</div>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <button class="btn btn-success" ng-disabled="validarValoresPreenchidos.$invalid" ng-click="saveInstallationStatus(installationStatus)">
+                <md-icon md-svg-icon="images/icons/plus.svg"></md-icon> ADICIONAR
+            </button>
+        </md-card-content>
+    </form>
+</md-card>
